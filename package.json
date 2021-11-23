@@ -1,0 +1,27 @@
+{
+  "name": "smart-brain-api",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "server.js",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "clarifai": "^2.9.1",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "helmet": "^4.6.0",
+    "knex": "^0.95.11",
+    "morgan": "^1.10.0",
+    "pg": "^8.7.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.13"
+  },
+  "scripts": {
+    "start": "nodemon  --experimental-modules --experimental-json-modules server.js"
+  },
+  "keywords": [],
+  "author": "Lonnie Byrd <lbyrd@siue.edu>",
+  "license": "MIT"
+}
