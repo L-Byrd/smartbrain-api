@@ -9,8 +9,10 @@ services:
     working_dir: /usr/src/smart-brain-api
     environment:
       # switch uri to environment variable in production
-      POSTGRES_URI: postgres://sally:secret@postgres:5432/smart-brain-docker
+      POSTGRES_URI: $POSTGRES_URI
+      REDIS_URI: $REDIS_URI
       API_KEY: $CLARIFAI_KEY
+      JWT_SECRET_KEY: $JWT_SECRET
     ports: 
       #detect port in production instead of hard coding
       - "3000:3000"
@@ -22,10 +24,16 @@ services:
   postgres: 
     environment:
       POSTGRES_USER: sally
-      POSTGRES_PASSWORD: secret
+      POSTGRES_PASSWORD: $DB_PASSWORD
       POSTGRES_DB: smart-brain-docker
       POSTGRES_HOST: postgres
     container_name: postgres
     build: ./postgres
     ports: 
       - "5432:5432"
+
+  #redis
+  redis:
+    image: redis
+    ports: 
+      - "6379:6379"

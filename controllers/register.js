@@ -1,3 +1,5 @@
+import { createSession } from "../tokens/token.js";
+
 const handleRegister = (db, bcrypt) => (req, res) => {
     const{email, name, password} = req.body; 
     if(!email || !name || !password){
@@ -20,8 +22,9 @@ const handleRegister = (db, bcrypt) => (req, res) => {
                 email: loginEmail[0],
                 name: name,
                 joined: new Date()
-            }).then(user => {
-            res.json(user[0])
+            })
+            .then(user => {
+                res.json(user[0]);
             })
         })
         .then(trx.commit)
